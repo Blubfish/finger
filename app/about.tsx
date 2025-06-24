@@ -1,10 +1,13 @@
 import { Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";  
+import { TamaguiProvider, Button } from 'tamagui';
+
 
 export default function AboutScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>About screen</Text>
+        <Text style={styles.text}>About screen</Text>
+        <Button onPress={() => alert('Button Pressed!')}>Click Me</Button>
     </SafeAreaView>
   );
 }
