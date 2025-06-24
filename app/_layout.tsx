@@ -1,16 +1,17 @@
 import { Stack } from 'expo-router';
-import { SafeAreaView } from "react-native-safe-area-context";  
 import { StatusBar } from 'expo-status-bar';
+import { TamaguiProvider } from '@tamagui/core';
+import tamaguiConfig from '../tamagui.config';
 
 export default function RootLayout() {
   return (
-    <SafeAreaView>
-      <StatusBar style="auto" />
-      <Stack>
-        <Stack.Screen name="index" options={{ title: 'Home' }} />
-        <Stack.Screen name="about" options={{ title: 'About' }} />
-      </Stack>
-    </SafeAreaView>
+      <TamaguiProvider config={tamaguiConfig}>
+        <StatusBar style="auto" />
+        <Stack>
+          <Stack.Screen name="index" options={{ title: 'Home' }} />
+          <Stack.Screen name="about" options={{ title: 'About' }} />
+        </Stack>
+      </TamaguiProvider>
   );
 }
 
