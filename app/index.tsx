@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Index() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Hello Sleepy Boy</Text>
+      <Text style={[styles.text, { fontFamily: "$body" }, { color: "cyan" }]}>Hello Sleepy Boy</Text>
       <Link href="/about" style={styles.button}>
         Go to About 
       </Link>
