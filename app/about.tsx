@@ -1,6 +1,6 @@
 import { Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";  
-import { TamaguiProvider, Button } from 'tamagui';
+import { Button } from 'tamagui';
 
 
 export default function AboutScreen() {
