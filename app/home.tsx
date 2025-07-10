@@ -69,7 +69,7 @@ export default function Home() {
               fontWeight="600"
               textAlign="center"
             >
-              You're signed in as:
+              You&apos;re signed in as:
             </H2>
             <Text
               color="$color"

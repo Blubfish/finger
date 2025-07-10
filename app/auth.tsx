@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { Alert } from "react-native";
+import { Alert, Pressable } from "react-native";
 import { supabase } from "@/lib/supabase";
 import { Button, Input, XStack, YStack, Text } from "tamagui";
-import { View } from "react-native";
-import { Pressable } from "react-native";
 import { router } from "expo-router";
 
 export default function Auth() {
