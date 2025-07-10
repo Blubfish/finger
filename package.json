@@ -48,7 +48,8 @@
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
     "react-router-dom": "^7.6.3",
-    "tamagui": "^1.131.1"
+    "tamagui": "^1.131.1",
+    "expo-dev-client": "~5.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
