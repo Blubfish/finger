@@ -1,11 +1,5 @@
 node_modules/
-
-expo-env.d.ts
-.expo-shared/
-.expo/
-
 dist/
-build/
 
-.env
-.env*
+.expo/
+expo-env.d.ts

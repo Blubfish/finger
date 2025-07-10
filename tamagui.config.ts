@@ -1,6 +1,6 @@
-import { createTamagui } from "tamagui";
+import { createTamagui } from "@tamagui/core";
 import { defaultConfig } from "@tamagui/config/v4";
 
-const tamaguiConfig = createTamagui(defaultConfig);
+const config = createTamagui(defaultConfig);
 
-export default tamaguiConfig;
+export default config;

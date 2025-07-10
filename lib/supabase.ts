@@ -1,13 +1,10 @@
 import "react-native-url-polyfill/auto";
-import { AppState } from "react-native";
-import Constants from 'expo-constants';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createClient, processLock } from "@supabase/supabase-js";
+import { config } from "./config";
+import { AppState } from "react-native";
 
-const supabaseUrl = Constants.expoConfig.extra.SUPABASE_URL;
-const supabaseAnonKey = Constants.expoConfig.extra.SUPABASE_ANON_KEY;
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+export const supabase = createClient(config.supabase.url, config.supabase.key, {
   auth: {
     storage: AsyncStorage,
     autoRefreshToken: true,

@@ -7,7 +7,7 @@ export default function NotFoundScreen() {
     <SafeAreaView style={styles.container}>
       <Stack.Screen options={{ title: "Page Not Found" }} />
       <Link href="/" style={styles.button}>
-        Go back to home{" "}
+        Go back to home
       </Link>
     </SafeAreaView>
   );
