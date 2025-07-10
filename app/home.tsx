@@ -14,15 +14,6 @@ export default function Home() {
     });
   }, []);
 
-  async function signOut() {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error("Error signing out:", error.message);
-    } else {
-      router.replace("/");
-    }
-  }
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <YStack
@@ -93,7 +84,10 @@ export default function Home() {
 
             <XStack gap="$3" justifyContent="center">
               <Button
-                onPress={signOut}
+                onPress={() => {
+                  supabase.auth.signOut();
+                  router.replace("/");
+                }}
                 backgroundColor="$red9"
                 color="white"
                 fontWeight="600"
