@@ -10,19 +10,27 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "icon": "./assets/ios-light.png"
+      "icon": "./assets/ios-light.png",
+      "bundleIdentifier": "com.moncheeta.finger",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.moncheeta.finger"
     },
     "extra": {
       "supabase": {
         "url": "https://yleeuwxywauqqzpwnfio.supabase.co",
         "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlsZWV1d3h5d2F1cXF6cHduZmlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA5Nzk1MTQsImV4cCI6MjA2NjU1NTUxNH0.Tt0EaWsJvcVh1YMOiuAR7dXAOwCocyo2OPqGUnGNwlE"
+      },
+      "eas": {
+        "projectId": "1ad07043-22e8-430f-b3ea-42704db79f0b"
       }
     },
     "web": {
