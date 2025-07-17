@@ -1,10 +1,10 @@
-import { View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Auth from "./auth";
 
 export default function App() {
   return (
-    <View>
+    <SafeAreaView style={{ flex: 1 }}>
       <Auth />
-    </View>
+    </SafeAreaView>
   );
 }

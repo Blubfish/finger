@@ -11,10 +11,6 @@ export default function Auth() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  function toggleMode() {
-    setMode((m) => (m === "signIn" ? "signUp" : "signIn"));
-  }
-
   async function handleAuth() {
     if (!email || !password) {
       Alert.alert("Please enter your email and password");
@@ -74,7 +70,7 @@ export default function Auth() {
         padding={24}
         gap={12}
       >
-        <Text fontSize={24} fontWeight="600">
+        <Text fontSize={24} fontWeight="600" marginBottom={8}>
           {mode === "signIn" ? "Welcome back" : "Create an account"}
         </Text>
 
@@ -116,13 +112,13 @@ export default function Auth() {
           {loading ? "Loading…" : mode === "signIn" ? "Sign In" : "Sign Up"}
         </Button>
 
-        <XStack marginTop={12} alignItems="center" gap={6}>
+        <XStack marginTop={8} alignItems="center" gap={6}>
           <Text>
             {mode === "signIn"
               ? "Don't have an account?"
               : "Already have an account?"}
           </Text>
-          <Pressable onPress={toggleMode} disabled={loading}>
+          <Pressable onPress={() => setMode(mode === "signIn" ? "signUp" : "signIn")} disabled={loading}>
             <Text color="$blue10" fontWeight="600">
               {mode === "signIn" ? "Sign Up" : "Sign In"}
             </Text>
