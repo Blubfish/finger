@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Alert, Pressable } from "react-native";
 import { supabase } from "@/lib/supabase";
 import { Button, Input, XStack, YStack, Text } from "tamagui";
@@ -6,18 +6,23 @@ import { router } from "expo-router";
 
 export default function Auth() {
   const [mode, setMode] = useState<"signIn" | "signUp">("signIn");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [loading, setLoading] = useState(false);
 
+  const passwordRef = useRef<any>(null);
+  const confirmPasswordRef = useRef<any>(null);
+
   async function handleAuth() {
-    if (!email || !password) {
+    if (!formData.email || !formData.password) {
       Alert.alert("Please enter your email and password");
       return;
     }
 
-    if (mode === "signUp" && password !== confirmPassword) {
+    if (mode === "signUp" && formData.password !== formData.confirmPassword) {
       Alert.alert("Passwords do not match");
       return;
     }
@@ -27,14 +32,14 @@ export default function Auth() {
     try {
       if (mode === "signIn") {
         const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
+          email: formData.email,
+          password: formData.password,
         });
         if (error) throw error;
       } else {
         const { data, error } = await supabase.auth.signUp({
-          email,
-          password,
+          email: formData.email,
+          password: formData.password,
         });
         if (error) throw error;
 
@@ -77,29 +82,45 @@ export default function Auth() {
         <Input
           placeholder="email@address.com"
           width={260}
-          value={email}
-          onChangeText={setEmail}
+          value={formData.email}
+          onChangeText={(text) => setFormData({ ...formData, email: text })}
           autoCapitalize="none"
           keyboardType="email-address"
+          returnKeyType="next"
+          onSubmitEditing={() => {
+            passwordRef.current?.focus();
+          }}
         />
 
         <Input
+          ref={passwordRef}
           placeholder="Password"
           width={260}
-          value={password}
-          onChangeText={setPassword}
+          value={formData.password}
+          onChangeText={(text) => setFormData({ ...formData, password: text })}
           secureTextEntry
           autoCapitalize="none"
+          returnKeyType={mode === "signUp" ? "next" : "done"}
+          onSubmitEditing={() => {
+            if (mode === "signUp") {
+              confirmPasswordRef.current?.focus();
+            } else {
+              handleAuth();
+            }
+          }}
         />
 
         {mode === "signUp" && (
           <Input
+            ref={confirmPasswordRef}
             placeholder="Confirm Password"
             width={260}
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
+            value={formData.confirmPassword}
+            onChangeText={(text) => setFormData({ ...formData, confirmPassword: text })}
             secureTextEntry
             autoCapitalize="none"
+            returnKeyType="done"
+            onSubmitEditing={handleAuth}
           />
         )}
 
